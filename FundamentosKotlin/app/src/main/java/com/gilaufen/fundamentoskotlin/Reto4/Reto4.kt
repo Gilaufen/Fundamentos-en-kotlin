@@ -24,24 +24,25 @@ fun main() {
                     1->{
                         println("Ingrese un nombre para la entrada")
                         var entrada:String = readLine().toString()
-                        menu[1][1]=entrada
+                        menu[0].add(entrada)
                     }
                     2->{
                         println("Ingrese un nombre para el plato fuerte")
                         var fuerte:String = readLine().toString()
-                        menu[1][1]=fuerte
+                        menu[1].add(fuerte)
                     }
                     3->{
                         println("Ingrese un nombre para el postre")
-                        var entrada:String = readLine().toString()
-                        menu[1][1]=entrada
+                        var postre:String = readLine().toString()
+                        menu[2].add(postre)
                     }
                     4->{
                         println("Ingrese un nombre para la bebida")
-                        var entrada:String = readLine().toString()
-                        menu[1][1]=entrada
+                        var bebida:String = readLine().toString()
+                        menu[3].add(bebida)
                     }
                 }
+                println(menu)
             }
             2 -> {
                 for ((categoriaIndex, platos) in menu.withIndex()) {
