@@ -5,46 +5,24 @@ class Reto4 {
 
 fun main() {
     val menu = mutableListOf(
-        mutableListOf("Fruta"), // Entradas
-        mutableListOf("Pulpo"), // Platos Fuertes
-        mutableListOf("Esponjado de mora"), // Postres
-        mutableListOf("jugo de banano")  // Bebidas
+        mutableListOf("Fruta","sopa"), // Entradas
+        mutableListOf("Pulpo","bandeja paisa"), // Platos Fuertes
+        mutableListOf("Esponjado de mora","tiramisu"), // Postres
+        mutableListOf("jugo de banano","limonada")  // Bebidas
     )
 
     while (true) {
-        println("Seleccione una opción: \n1. Agregar plato \n2. Mostrar todos los platos \n3. Mostrar platos por categoría \n4.Modificar menú \n5. Eliminar plato \n6. Salir")
+        println("Seleccione una opción: \n1. Agregar plato \n2. Mostrar todos los platos \n3. Mostrar platos por categoría \n4.Modificar menú \n5. Modificar plato \n6.Eliminar un plato \n7. Salir")
         var seleccion:Int= readLine()!!.toInt()
 
         when (seleccion) {
             1 -> {
                 println("Seleccione una categoría: \n1.Entradas \n2.Platos Fuertes \n3.Postres \n4.Bebidas")
-                val categoria: Int = readLine()!!.toInt()
+                var categoria: Int = readLine()!!.toInt()
 
-                when (categoria) {
-                    1 -> {
-                        println("Ingrese un nombre para la entrada")
-                        var entrada: String = readLine().toString()
-                        menu[0].add(entrada)
-                    }
-
-                    2 -> {
-                        println("Ingrese un nombre para el plato fuerte")
-                        var fuerte: String = readLine().toString()
-                        menu[1].add(fuerte)
-                    }
-
-                    3 -> {
-                        println("Ingrese un nombre para el postre")
-                        var postre: String = readLine().toString()
-                        menu[2].add(postre)
-                    }
-
-                    4 -> {
-                        println("Ingrese un nombre para la bebida")
-                        var bebida: String = readLine().toString()
-                        menu[3].add(bebida)
-                    }
-                }
+                println("Ingrese un nombre para el plato")
+                var plato: String = readLine().toString()
+                menu[categoria-1].add(plato)
             }
 
             2 -> {
@@ -79,17 +57,45 @@ fun main() {
 
             3 -> {
                 println("Seleccione una categoría: \n1.Entradas \n2.Platos Fuertes \n3.Postres \n4.Bebidas")
-                val categoria: Int = readLine()!!.toInt()
-            }
-            /*
-            4 -> {
+                var categoria: Int = readLine()!!.toInt()
+                println("Ingrese el código del plato")
+                var posicion:Int= readLine()!!.toInt()
 
+                for ((index,element) in menu[categoria-1].withIndex()){
+                    if(menu[categoria-1][index] == menu[categoria-1][posicion]) {
+                        println("▼ ${menu[categoria-1][posicion]}")
+                    }
+                }
+            }
+
+            4 -> {
+                println("Seleccione una categoría: \n1.Entradas \n2.Platos Fuertes \n3.Postres \n4.Bebidas")
+                var categoria: Int = readLine()!!.toInt()
+
+                println("Vamos a editar todas los platos de esta categoría")
+                for ((index, element) in menu[categoria-1].withIndex()) {
+                    println("El plato es $element, ingrese un nuevo nombre")
+                    menu[categoria-1][index]= readLine().toString()
+                }
             }
             5 -> {
+                println("Seleccione una categoría: \n1.Entradas \n2.Platos Fuertes \n3.Postres \n4.Bebidas")
+                var categoria: Int = readLine()!!.toInt()
 
+                println("Ingrese la posición del plato que desea editar")
+                var posicion:Int= readLine()!!.toInt()
+                println("El plato es ${menu[categoria-1][posicion]}, ingrese un nuevo nombre")
+                menu[categoria-1][posicion]= readLine().toString()
             }
-            */
-            6 -> {
+            6->{
+                println("Seleccione una categoría: \n1.Entradas \n2.Platos Fuertes \n3.Postres \n4.Bebidas")
+                var categoria: Int = readLine()!!.toInt()
+
+                println("Ingrese la posición del plato que desea eliminar")
+                var posicion:Int= readLine()!!.toInt()
+                menu[categoria-1].removeAt(posicion)
+            }
+            7 -> {
                 println("Gracias por utilizar el programa. ¡Hasta pronto!")
                 return
             }
