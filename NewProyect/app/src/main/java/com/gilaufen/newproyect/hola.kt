@@ -19,7 +19,10 @@ fun datos(){
 fun main(){
    //datos()
    //println("el numero mayor es :${mayor(1,2)}")
-   println("el numero es ${whenN(2)}")
+   for(i in 1..5){
+      println("el numero es ${whenN(i)}")
+   }
+
 }
 
 //funciones de única expresión,son las que solo hacen una cosa y la podemos llamar en cualquier parte del código
