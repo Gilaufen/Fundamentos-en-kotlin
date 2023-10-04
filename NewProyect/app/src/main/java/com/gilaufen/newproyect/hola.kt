@@ -15,3 +15,7 @@ fun datos(){
    val calculoSuperficie = superficie(ladoRecogido)
    println("la superficie es ${calculoSuperficie}")
 }
+
+fun main(){
+   datos()
+}
