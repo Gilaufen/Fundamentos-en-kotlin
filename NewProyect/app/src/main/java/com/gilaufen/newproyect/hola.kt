@@ -11,5 +11,7 @@ fun superficie(lado:Int):Int{
 
 fun datos(){
    println("Ingrese el valor del dado")
-
+   val ladoRecogido = readln().toInt()
+   val calculoSuperficie = superficie(ladoRecogido)
+   println("la superficie es ${calculoSuperficie}")
 }
