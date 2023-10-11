@@ -1,4 +1,4 @@
-package com.gilaufen.newproyect
+package com.gilaufen.newproyect.practica
 
 class arreglos {
 }
