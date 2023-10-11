@@ -1,6 +1,8 @@
 package com.gilaufen.newproyect.pooColab
 
-class Cliente(var nombre:String, var saldoCuenta:Float) {
+class Cliente( var nombre:String, var saldoCuenta:Float) {
+
+    private var apellido:String = ""
 
     fun consignar(valor:Float){
         this.saldoCuenta += valor
