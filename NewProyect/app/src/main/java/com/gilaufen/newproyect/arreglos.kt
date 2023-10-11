@@ -19,6 +19,7 @@ fun salario(){
 
     for (i in 0..4) {
         println(salarios[i])
+
     }
 
 
