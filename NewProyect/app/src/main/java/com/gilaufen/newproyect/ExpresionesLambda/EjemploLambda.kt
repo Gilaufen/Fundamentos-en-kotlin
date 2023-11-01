@@ -6,6 +6,8 @@ package com.gilaufen.newproyect.ExpresionesLambda
 fun operar(numero1: Double, numero2: Double, fn:(Double,Double)->Double):Double{
     return fn(numero1,numero2)
 }
+
+
 //funcion anonima, tipo no existe sino cuando llamamos la función de orden superior la creamos, eso es lo que se crea en las "{ }"
 
 fun main(){

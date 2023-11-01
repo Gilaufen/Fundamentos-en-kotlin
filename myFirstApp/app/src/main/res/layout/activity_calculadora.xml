@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#2C2B3E"
+    tools:context=".Calculadora">
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="317dp"
+        android:layout_height="427dp"
+        android:background="#FFFFFF"
+        app:circularflow_angles="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.651" />
+
+    <EditText
+        android:id="@+id/numero1"
+        android:layout_width="246dp"
+        android:layout_height="60dp"
+        android:ems="10"
+        android:fontFamily="@font/quicksand"
+        android:hint="Ingrese el número 1"
+        android:inputType="number"
+        android:textColorHighlight="#A31A1A"
+        android:textColorHint="#9A8080"
+        android:textColorLink="#432A2A"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintHorizontal_bias="0.386"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toTopOf="@+id/view2"
+        app:layout_constraintVertical_bias="0.348" />
+
+    <EditText
+        android:id="@+id/numero2"
+        android:layout_width="243dp"
+        android:layout_height="54dp"
+        android:ems="10"
+        android:fontFamily="@font/quicksand"
+        android:hint="Ingrese el número 2"
+        android:inputType="number"
+        android:textColorHint="#A58B8B"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintHorizontal_bias="0.373"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toTopOf="@+id/view2"
+        app:layout_constraintVertical_bias="0.532" />
+
+    <Button
+        android:id="@+id/buttonCal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand"
+        android:text="Calcular"
+        android:textColor="#F4F1F1"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="136dp"
+        tools:layout_editor_absoluteY="539dp" />
+
+    <TextView
+        android:id="@+id/resultCal"
+        android:layout_width="238dp"
+        android:layout_height="50dp"
+        android:fontFamily="@font/quicksand"
+        android:text="0"
+        android:textAlignment="viewEnd"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toTopOf="@+id/view2"
+        app:layout_constraintVertical_bias="0.095" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand"
+        android:text="Calculadora"
+        android:textColor="#F4F4F4"
+        android:textSize="48sp"
+        tools:layout_editor_absoluteX="75dp"
+        tools:layout_editor_absoluteY="41dp" />
+
+    <Button
+        android:id="@+id/volver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quicksand"
+        android:text="Volver"
+        tools:layout_editor_absoluteX="301dp"
+        tools:layout_editor_absoluteY="665dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
