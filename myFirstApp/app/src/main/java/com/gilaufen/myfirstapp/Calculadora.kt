@@ -14,7 +14,7 @@ class Calculadora : AppCompatActivity() {
         val numero1= findViewById<EditText>(R.id.numero1)
         val numero2= findViewById<EditText>(R.id.numero2)
         val resultadoBox = findViewById<TextView>(R.id.resultCal)
-        val botoncalcular = findViewById<Button>(R.id.buttonCal)
+        val botoncalcular = findViewById<Button>(R.id.butCalculadora)
 
         botoncalcular.setOnClickListener {
             var suma = numero1.text.toString().toInt() + numero2.text.toString().toInt()

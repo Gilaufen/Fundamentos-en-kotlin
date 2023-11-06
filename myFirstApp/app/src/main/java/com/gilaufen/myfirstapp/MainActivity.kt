@@ -15,11 +15,18 @@ class MainActivity : AppCompatActivity() {
 
         val numero = findViewById<EditText>(R.id.editTextPhone)
         val botonRegistrar = findViewById<Button>(R.id.button)
+        val botonSalir = findViewById<Button>(R.id.salir)
 
         botonRegistrar.setOnClickListener {
             var numeroRecogido =  numero.text.toString()
             Toast.makeText(this, "Tu número de celular es ${numeroRecogido}, ¡Bienvenido a mi Nequi!", Toast.LENGTH_LONG).show()
+            val ingresar = Intent(this,Menu::class.java)
+            startActivity(ingresar)
+        }
 
+        botonSalir.setOnClickListener {
+            val ingresar = Intent(this,Menu::class.java)
+            startActivity(ingresar)
         }
 
 
