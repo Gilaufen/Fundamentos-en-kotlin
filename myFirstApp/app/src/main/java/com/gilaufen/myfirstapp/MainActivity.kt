@@ -19,10 +19,10 @@ class MainActivity : AppCompatActivity() {
         botonRegistrar.setOnClickListener {
             var numeroRecogido =  numero.text.toString()
             Toast.makeText(this, "Tu número de celular es ${numeroRecogido}, ¡Bienvenido a mi Nequi!", Toast.LENGTH_LONG).show()
+
         }
 
-        val intento = Intent(this,Ventana2::class.java)
-        startActivity(intento)
+
 
     }
 }
