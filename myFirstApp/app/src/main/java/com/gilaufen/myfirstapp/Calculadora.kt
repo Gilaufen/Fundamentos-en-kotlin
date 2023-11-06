@@ -18,6 +18,7 @@ class Calculadora : AppCompatActivity() {
 
         botoncalcular.setOnClickListener {
             var suma = numero1.text.toString().toInt() + numero2.text.toString().toInt()
+            suma.toString()
             resultadoBox.setText(suma)
         }
 
