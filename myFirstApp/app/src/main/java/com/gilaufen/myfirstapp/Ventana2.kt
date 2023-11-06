@@ -1,5 +1,6 @@
 package com.gilaufen.myfirstapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -16,6 +17,8 @@ class Ventana2 : AppCompatActivity() {
         val saldoActual= findViewById<TextView>(R.id.textView5)
         val botonSacar = findViewById<Button>(R.id.button2)
         val botonIngresar = findViewById<Button>(R.id.button3)
+        val salir = findViewById<Button>(R.id.botonVolver)
+
 
         botonSacar.setOnClickListener {
             var resultadoResta =saldoActual.text.toString().toInt() - dineroSacar.text.toString().toInt()
@@ -27,6 +30,11 @@ class Ventana2 : AppCompatActivity() {
             var resultadoSuma = dineroIngresar.text.toString().toInt() + saldoActual.text.toString().toInt()
             resultadoSuma.toString()
             saldoActual.setText("$resultadoSuma")
+        }
+
+        salir.setOnClickListener{
+            val intento = Intent(this,Menu::class.java)
+            startActivity(intento)
         }
     }
 }
