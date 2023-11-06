@@ -18,7 +18,7 @@ class Ventana2 : AppCompatActivity() {
         val botonIngresar = findViewById<Button>(R.id.button3)
 
         botonSacar.setOnClickListener {
-            var resultadoResta = dineroSacar.text.toString().toInt() - saldoActual.text.toString().toInt()
+            var resultadoResta =saldoActual.text.toString().toInt() - dineroSacar.text.toString().toInt()
             resultadoResta.toString()
             saldoActual.setText("$resultadoResta")
         }
