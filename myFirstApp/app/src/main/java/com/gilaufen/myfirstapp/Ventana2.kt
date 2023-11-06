@@ -15,15 +15,17 @@ class Ventana2 : AppCompatActivity() {
         val dineroIngresar= findViewById<EditText>(R.id.editTextNumber3)
         val saldoActual= findViewById<TextView>(R.id.textView5)
         val botonSacar = findViewById<Button>(R.id.button2)
-        val botonIngresar = findViewById<Button>(R.id.button2)
+        val botonIngresar = findViewById<Button>(R.id.button3)
 
         botonSacar.setOnClickListener {
-            var resultadoResta = dineroSacar.text.toString().toInt() + saldoActual.text.toString().toInt()
+            var resultadoResta = dineroSacar.text.toString().toInt() - saldoActual.text.toString().toInt()
+            resultadoResta.toString()
             saldoActual.setText("$resultadoResta")
         }
 
         botonIngresar.setOnClickListener {
             var resultadoSuma = dineroIngresar.text.toString().toInt() + saldoActual.text.toString().toInt()
+            resultadoSuma.toString()
             saldoActual.setText("$resultadoSuma")
         }
     }
