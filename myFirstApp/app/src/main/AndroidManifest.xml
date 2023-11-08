@@ -13,22 +13,23 @@
         android:theme="@style/Theme.MyFirstApp"
         tools:targetApi="34">
         <activity
+            android:name=".Encuesta"
+            android:exported="true" />
+        <activity
             android:name=".Menu"
-            android:exported="true"/>
-
+            android:exported="true" />
         <activity
             android:name=".Calculadora"
-            android:exported="true"/>
-
+            android:exported="true" />
         <activity
             android:name=".Ventana2"
-            android:exported="true"/>
-
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
