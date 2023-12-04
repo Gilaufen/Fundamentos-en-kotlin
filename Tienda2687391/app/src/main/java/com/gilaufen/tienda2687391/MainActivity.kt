@@ -2,6 +2,7 @@ package com.gilaufen.tienda2687391
 
 import android.annotation.SuppressLint
 import android.content.ContentValues
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         val buttonConsultar = findViewById<Button>(R.id.buttonConsultarP);
         val buttonEliminar = findViewById<Button>(R.id.buttonEliminarP);
         val buttonEditar = findViewById<Button>(R.id.buttonEditarP);
+        val buttonVerProductos = findViewById<Button>(R.id.VerProductos);
 
         val codigo = findViewById<EditText>(R.id.editTextNumberCodigo);
         val nombre = findViewById<EditText>(R.id.editTextNombreP);
@@ -54,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             val db = adminDB.writableDatabase;
 
             //normal consultar sql para poder acceder a la base de datos
-            val consulta=db.rawQuery("select nombre, producto from producto where codigo = ${codigo.text.toString()}", null);
+            val consulta = db.rawQuery("SELECT nombre, precio FROM producto WHERE codigo = ${codigo.text.toString()}", null)
 
             //recorre desed el primero, o sea uno por uno para poder encontrarlo
             if(consulta.moveToFirst()) {
@@ -88,7 +90,7 @@ class MainActivity : AppCompatActivity() {
         buttonEliminar.setOnClickListener {
             val adminDB = AdminSQL(this, "TiendaEucas", null, 1 );
             val db = adminDB.writableDatabase;
-            val eliminar = db.delete("producto", "where codigo = ${codigo.text.toString()}", null)
+            val eliminar = db.delete("producto", "codigo = ${codigo.text.toString()}", null)
             codigo.setText("");
             nombre.setText("");
             precio.setText("");
@@ -98,6 +100,12 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this,"Producto no encontrado", Toast.LENGTH_LONG).show();
             }
         }
+
+        buttonVerProductos.setOnClickListener{
+            val intento1 = Intent(this,ListProducts::class.java)
+            startActivity(intento1)
+        }
+
 
     }
 
