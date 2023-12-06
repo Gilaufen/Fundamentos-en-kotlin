@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
             registro.put("precio", precio.text.toString().toFloat())
             val consulta = db.rawQuery("SELECT codigo FROM producto WHERE codigo = ${codigo.text.toString()}", null)
 
-            if(consulta == null){
+            if(consulta === null){
                 db.insert("producto",null, registro);
                 db.close()
                 codigo.setText("");
