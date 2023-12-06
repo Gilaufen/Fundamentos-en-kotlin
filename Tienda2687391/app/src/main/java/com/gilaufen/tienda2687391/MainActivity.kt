@@ -29,54 +29,64 @@ class MainActivity : AppCompatActivity() {
 
         buttonRegistrar.setOnClickListener{
 
-            //yo no tengo que mandar el cursor porque ya viene con la libreria por eso mandamos nulo
-            //con la version le decimos cual de todas las versiones queremos modificar, por ahora solo la primera
-            val adminDB = AdminSQL(this, "TiendaEucas", null, 1 );
-
-            //permite usar y manipular la tabla que creamos por allá en la base de datos
-            val db = adminDB.writableDatabase;
-
-            //le decimos que registro tiene varios valores con ese contenedor
-            val registro = ContentValues()
-            registro.put("codigo", codigo.text.toString().toInt())
-            registro.put("nombre", nombre.text.toString())
-            registro.put("precio", precio.text.toString().toFloat())
-            val consulta = db.rawQuery("SELECT codigo FROM producto WHERE codigo = ${codigo.text.toString()}", null)
-
-            if(consulta === null){
-                db.insert("producto",null, registro);
-                db.close()
-                codigo.setText("");
-                nombre.setText("");
-                precio.setText("");
-                Toast.makeText(this,"Producto Registrado", Toast.LENGTH_LONG).show()
+            if(codigo==null && nombre==null && precio==null){
+                Toast.makeText(this,"Hay un campo vacío", Toast.LENGTH_SHORT).show();
             }else{
-                Toast.makeText(this,"Ese código de producto ya existe", Toast.LENGTH_LONG).show();
-                codigo.setText("");
-                db.close()
+                //yo no tengo que mandar el cursor porque ya viene con la libreria por eso mandamos nulo
+                //con la version le decimos cual de todas las versiones queremos modificar, por ahora solo la primera
+                val adminDB = AdminSQL(this, "TiendaEucas", null, 1 );
+
+                //permite usar y manipular la tabla que creamos por allá en la base de datos
+                val db = adminDB.writableDatabase;
+
+                //le decimos que registro tiene varios valores con ese contenedor
+                val registro = ContentValues()
+                registro.put("codigo", codigo.text.toString().toInt())
+                registro.put("nombre", nombre.text.toString())
+                registro.put("precio", precio.text.toString().toFloat())
+                val consulta = db.rawQuery("SELECT codigo FROM producto WHERE codigo = ${codigo.text.toString()}", null)
+
+                if(consulta === null){
+                    db.insert("producto",null, registro);
+                    db.close()
+                    codigo.setText("");
+
+                    Toast.makeText(this,"Producto Registrado", Toast.LENGTH_LONG).show()
+                }else{
+                    Toast.makeText(this,"Ese código de producto ya existe", Toast.LENGTH_LONG).show();
+                    codigo.setText("");
+                    db.close()
+                }
             }
         }
         buttonConsultar.setOnClickListener {
 
-            //aquí comprueba si la base de datos existe, teniendo en cuenta la version, si no pues la crea y si si pues la deja muy suaves
-            val adminDB = AdminSQL(this, "TiendaEucas", null, 1 );
-            val db = adminDB.writableDatabase;
-
-            //normal consultar sql para poder acceder a la base de datos
-            val consulta = db.rawQuery("SELECT nombre, precio FROM producto WHERE codigo = ${codigo.text.toString()}", null)
-
-            //recorre desed el primero, o sea uno por uno para poder encontrarlo
-            if(consulta.moveToFirst()) {
-                //index de las columnas consultadas, por ejemplo la 0 es nombre :0
-                nombre.setText(consulta.getString(0));
-                precio.setText(consulta.getString(1));
-            }else{
-                //si no encuentra nada :p
-                Toast.makeText(this,"Producto no encontrado", Toast.LENGTH_LONG).show();
+            if(codigo == null){
+                Toast.makeText(this,"Escribe un código para buscar el producto", Toast.LENGTH_LONG).show();
                 nombre.setText("");
                 precio.setText("");
+            }else{
+                //aquí comprueba si la base de datos existe, teniendo en cuenta la version, si no pues la crea y si si pues la deja muy suaves
+                val adminDB = AdminSQL(this, "TiendaEucas", null, 1 );
+                val db = adminDB.writableDatabase;
+
+                //normal consultar sql para poder acceder a la base de datos
+                val consulta = db.rawQuery("SELECT nombre, precio FROM producto WHERE codigo = ${codigo.text.toString()}", null)
+
+                //recorre desed el primero, o sea uno por uno para poder encontrarlo
+                if(consulta.moveToFirst()) {
+                    //index de las columnas consultadas, por ejemplo la 0 es nombre :0
+                    nombre.setText(consulta.getString(0));
+                    precio.setText(consulta.getString(1));
+                }else{
+                    //si no encuentra nada :p
+                    Toast.makeText(this,"Producto no encontrado", Toast.LENGTH_LONG).show();
+                    nombre.setText("");
+                    precio.setText("");
+                }
+                db.close()
             }
-            db.close()
+
         }
 
         buttonEditar.setOnClickListener {
@@ -95,17 +105,25 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonEliminar.setOnClickListener {
-            val adminDB = AdminSQL(this, "TiendaEucas", null, 1 );
-            val db = adminDB.writableDatabase;
-            val eliminar = db.delete("producto", "codigo = ${codigo.text.toString()}", null)
-            codigo.setText("");
-            nombre.setText("");
-            precio.setText("");
-            if(eliminar ==1){
-                Toast.makeText(this,"Producto Eliminado", Toast.LENGTH_LONG).show();
+
+            if(codigo == null){
+                Toast.makeText(this,"Escribe un código para eliminar el producto", Toast.LENGTH_LONG).show();
+                nombre.setText("");
+                precio.setText("");
             }else{
-                Toast.makeText(this,"Producto no encontrado", Toast.LENGTH_LONG).show();
+                val adminDB = AdminSQL(this, "TiendaEucas", null, 1 );
+                val db = adminDB.writableDatabase;
+                val eliminar = db.delete("producto", "codigo = ${codigo.text.toString()}", null)
+                codigo.setText("");
+                nombre.setText("");
+                precio.setText("");
+                if(eliminar ==1){
+                    Toast.makeText(this,"Producto Eliminado", Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(this,"Producto no encontrado", Toast.LENGTH_LONG).show();
+                }
             }
+
         }
 
         buttonVerProductos.setOnClickListener{
