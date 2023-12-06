@@ -41,13 +41,20 @@ class MainActivity : AppCompatActivity() {
             registro.put("codigo", codigo.text.toString().toInt())
             registro.put("nombre", nombre.text.toString())
             registro.put("precio", precio.text.toString().toFloat())
+            val consulta = db.rawQuery("SELECT codigo FROM producto WHERE codigo = ${codigo.text.toString()}", null)
 
-            db.insert("producto",null, registro);
-            db.close()
-            codigo.setText("");
-            nombre.setText("");
-            precio.setText("");
-            Toast.makeText(this,"Producto Registrado", Toast.LENGTH_LONG).show()
+            if(consulta == null){
+                db.insert("producto",null, registro);
+                db.close()
+                codigo.setText("");
+                nombre.setText("");
+                precio.setText("");
+                Toast.makeText(this,"Producto Registrado", Toast.LENGTH_LONG).show()
+            }else{
+                Toast.makeText(this,"Ese código de producto ya existe", Toast.LENGTH_LONG).show();
+                codigo.setText("");
+                db.close()
+            }
         }
         buttonConsultar.setOnClickListener {
 
